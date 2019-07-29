@@ -648,11 +648,11 @@ int getCost(int cardNumber)
 void playBaron(int currentPlayer, int choice1, struct gameState *state)
 {
   state->numBuys++;//Increase buys by 1!
-  if (choice1 >= 0){//Boolean true or going to discard an estate
+  if (choice1 > 0){//Boolean true or going to discard an estate
     int p = 0;//Iterator for hand!
     int card_not_discarded = 1;//Flag for discard set!
     while(card_not_discarded){
-      if (state->hand[currentPlayer][p] = estate){//Found an estate card!
+      if (state->hand[currentPlayer][p] == estate){//Found an estate card!
         state->coins += 4;//Add 4 coins to the amount of coins
         state->discard[currentPlayer][state->discardCount[currentPlayer]] = state->hand[currentPlayer][p];
         state->discardCount[currentPlayer]++;
@@ -719,7 +719,7 @@ void playMinion(int choice1, int choice2, int currentPlayer, int handPos, struct
     }
         
     //draw 4
-    for (i = 0; i == 4; i++)
+    for (i = 0; i < 4; i++)
     {
       drawCard(currentPlayer, state);
     }
@@ -729,7 +729,7 @@ void playMinion(int choice1, int choice2, int currentPlayer, int handPos, struct
     {
       if (i != currentPlayer)
       {
-        if ( state->handCount[i] >= 4 )
+        if ( state->handCount[i] > 4 )
         {
             //discard hand
           while( state->handCount[i] > 0 )
